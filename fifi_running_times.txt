@@ -1,0 +1,42 @@
+Classified texts: 10  Elapsed time: 2.8609204292297363
+Classified texts: 20  Elapsed time: 1.189756155014038
+Classified texts: 100  Elapsed time: 17.41324734687805
+Classified texts: 200  Elapsed time: 32.47847270965576
+Classified texts: 500  Elapsed time: 79.44705939292908
+Classified texts: 1000  Elapsed time: 222.1857943534851
+Classified texts: 1000  Elapsed time: 219.17068314552307
+Blocknum: 0 Startrow: 0 Endrow: 999 Classified texts: 1000  Elapsed time: 167.8751380443573
+Blocknum: 2 Startrow: 2000 Endrow: 2999 Classified texts: 1000  Elapsed time: 200.68633604049683
+Blocknum:3 Startrow: 3000 Endrow: 3499 Classified texts: 500 Elapsed time: 124.81329083442688
+Blocknum: 4 Startrow: 3500 Endrow: 3999 Classified texts: 500 Elapsed time: 60.426405906677246
+Blocknum: 5 Startrow: 4000 Endrow: 4499 Classified texts: 500 Elapsed time: 142.0907220840454
+Blocknum: 6 Startrow: 1000 Endrow: 1499 Classified texts: 500 Elapsed time: 141.52900075912476
+Blocknum: 7 Startrow: 1500 Endrow: 1999 Classified texts: 500 Elapsed time: 88.01129531860352
+Blocknum: 8 Startrow: 4500 Endrow: 4999 Classified texts: 500 Elapsed time: 73.05490779876709
+Blocknum: 9 Startrow: 5000 Endrow: 5999 Classified texts: 1000 Elapsed time: 193.76994156837463
+Blocknum: 1 Startrow: 6000 Endrow: 6999 Classified texts: 1000 Elapsed time: 115.58349800109863
+Blocknum: 10 Startrow: 7000 Endrow: 7499 Classified texts: 500 Elapsed time: 66.4581151008606
+Blocknum: 11 Startrow: 7500 Endrow: 7999 Classified texts: 500 Elapsed time: 123.64130783081055
+Blocknum: 12 Startrow: 8000 Endrow: 8749 Classified texts: 750 Elapsed time: 109.90159201622009
+Blocknum: 13 Startrow: 8750 Endrow: 9349 Classified texts: 600 Elapsed time: 167.38281202316284
+Blocknum: 14 Startrow: 9350 Endrow: 9999 Classified texts: 650 Elapsed time: 92.31684446334839
+Blocknum: 15 Startrow: 10000 Endrow: 10749 Classified texts: 750 Elapsed time: 200.60833406448364
+Blocknum: 16 Startrow: 10750 Endrow: 11399 Classified texts: 650 Elapsed time: 66.80696964263916
+Blocknum: 17 Startrow: 11400 Endrow: 11899 Classified texts: 500 Elapsed time: 139.50558590888977
+Blocknum: 18 Startrow: 11900 Endrow: 12499 Classified texts: 600 Elapsed time: 105.92334604263306
+Blocknum: 19 Startrow: 12500 Endrow: 12999 Classified texts: 500 Elapsed time: 132.1956343650818
+Blocknum: 20 Startrow: 13000 Endrow: 13599 Classified texts: 600 Elapsed time: 102.0830864906311
+Blocknum: 21 Startrow: 13600 Endrow: 14199 Classified texts: 600 Elapsed time: 123.13701510429382
+Blocknum: 22 Startrow: 14200 Endrow: 14799 Classified texts: 600 Elapsed time: 64.1576178073883
+Blocknum: 23 Startrow: 14800 Endrow: 15499 Classified texts: 700 Elapsed time: 146.95875024795532
+Blocknum: 24 Startrow: 15500 Endrow: 16199 Classified texts: 700 Elapsed time: 94.33719301223755
+Blocknum: 25 Startrow: 16200 Endrow: 16899 Classified texts: 700 Elapsed time: 124.81188464164734
+Blocknum: 26 Startrow: 16900 Endrow: 17599 Classified texts: 700 Elapsed time: 195.28177952766418
+Blocknum: 27 Startrow: 17600 Endrow: 18299 Classified texts: 700 Elapsed time: 142.25376749038696
+Blocknum: 28 Startrow: 18300 Endrow: 18999 Classified texts: 700 Elapsed time: 119.68645596504211
+Blocknum: 29 Startrow: 19000 Endrow: 19449 Classified texts: 450 Elapsed time: 51.06765127182007
+Blocknum: 30 Startrow: 19500 Endrow: 20000 Classified texts: 501 Elapsed time: 119.39563798904419
+Blocknum: 31 Startrow: 20001 Endrow: 20082 Classified texts: 82 Elapsed time: 6.305827379226685
+Blocknum: 31 Startrow: 20001 Endrow: 20081 Classified texts: 81 Elapsed time: 6.278422832489014
+Blocknum: 31 Startrow: 20001 Endrow: 20081 Classified texts: 81 Elapsed time: 6.272820234298706
+Blocknum: 0 Startrow: 0 Endrow: 999 Classified texts: 1000 Elapsed time: 165.90333342552185
