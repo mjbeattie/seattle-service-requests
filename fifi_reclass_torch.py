@@ -39,16 +39,24 @@ def main(fileout):
     # Run the routine on blocks of 500 -- memory can't handle more
     blocknum = 0
     startrow = 0
-    endrow = 999
+    endrow = 250
     samplesize = endrow - startrow + 1
     unlsubset = unldf.iloc[startrow:endrow]
     
     texts = unlsubset['text'].tolist()
     servreqids = unlsubset['servreqid'].tolist()
     
+    # Get tokenizer from pre-trained model and tokenize texts
+    tokenizer = AutoTokenizer.from_pretrained("mjbeattie/fifi_classification")
+    print("Tokenizing input texts")
     inputs = tokenizer(texts, truncation=True, padding=True, max_length=512, return_tensors="pt")
-    
+
+    # Get model for reclassification
+    print("Loading model")
+    model = AutoModelForSequenceClassification.from_pretrained("mjbeattie/fifi_classification")
+
     # Predict the classification of the test text
+    print("Reclassifying texts")
     with torch.no_grad():
         logits = model(**inputs).logits
     

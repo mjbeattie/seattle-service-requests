@@ -1,4 +1,0 @@
-Starting routineText: There is a dead dog. | Predicted Label: 14
-Text: Somebody tagged the wall of my store | Predicted Label: 0
-Text: There are tents blocking the sidewalk of my business | Predicted Label: 1
-Text: The streetlight in front of my house is out | Predicted Label: 13

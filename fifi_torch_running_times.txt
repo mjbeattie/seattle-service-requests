@@ -1,0 +1,2 @@
+Blocknum: 0 Startrow: 0 Endrow: 10 Classified texts: 11 Elapsed time: 3.9974842071533203
+Blocknum: 0 Startrow: 0 Endrow: 250 Classified texts: 251 Elapsed time: 63.707009077072144
