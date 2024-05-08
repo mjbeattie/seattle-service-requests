@@ -22,11 +22,21 @@ def append_line_to_file(file_path, line):
         # Append the line to the file
         file.write(line)
 
-def main(fileout):
+def main(blocknum, startrow, endrow):
+
+    # Try to manage memory
+    device_map="auto"
+    torch_dtype=torch.float16
 
     # Set parallelism explicitly to avoid warning
     os.environ["TOKENIZERS_PARALLELISM"] = "true"
     
+    # Check for GPU
+    print("GPU available?", torch.cuda.is_available())
+    devices = [i for i in range(torch.cuda.device_count())]
+    device_names = [torch.cuda.get_device_name(d) for d in devices]
+    print(f"Available GPUs: {device_names}")
+
     # Record the run times to a log file
     logf = 'fifi_torch_running_times.txt'
     start_time = time.time()
@@ -37,10 +47,10 @@ def main(fileout):
     unldf = pd.read_csv(file_path + unlabelledf)
     
     # Run the routine on blocks of 500 -- memory can't handle more
-    blocknum = 0
-    startrow = 0
-    endrow = 250
-    samplesize = endrow - startrow + 1
+#    blocknum = 6
+#    startrow = 35000
+#    endrow = 40000
+    samplesize = endrow - startrow
     unlsubset = unldf.iloc[startrow:endrow]
     
     texts = unlsubset['text'].tolist()
@@ -108,8 +118,9 @@ def main(fileout):
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
-    parser.add_argument("--fileout", type=str, required=False, help="Enter name of output file", default='fifi_inference_torch_output.txt')
-
+    parser.add_argument("--blocknum", type=int, required=True, help="Enter the block number", default=999)
+    parser.add_argument("--startrow", type=int, required=True, help="Enter the startrow", default=40000)
+    parser.add_argument("--endrow", type=int, required=True, help="Enter the endrow", default=45000)
     args = parser.parse_args()
-    print('Running classification with fileout = ', args.fileout)
-    main(args.fileout)
+    print('Running classification with blocknum=', args.blocknum, "startrow=", args.startrow, "endrow=", args.endrow)
+    main(args.blocknum, args.startrow, args.endrow)
