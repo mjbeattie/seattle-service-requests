@@ -77,20 +77,22 @@ FROM alldetail_text t1
 WHERE t1."Service Request Type" LIKE '%Unauthorized Encampment';
 
 
---Select post-encampment data for download
-SELECT t1."Service Request ID", t1."Service Request Type", t1."alldetails"
-FROM alldetail_text t1
-WHERE t1."Created Date" > '2022-06-26'
-AND t1."alldetails" IS NOT NULL
-AND t1."alldetails" <> ' ';
+--Create view of post-encampment data for download
+CREATE MATERIALIZED VIEW post_encamp_value_reqs AS
+	SELECT t1."Service Request ID", t1."Service Request Type", t1."alldetails"
+	FROM alldetail_text t1
+	WHERE t1."Created Date" > '2022-06-26'
+	AND t1."alldetails" IS NOT NULL
+	AND t1."alldetails" <> ' ';
 
 
---Select pre-encampment data for download
-SELECT t1."Service Request ID", t1."Service Request Type", t1."alldetails"
-FROM alldetail_text t1
-WHERE t1."Created Date" < '2022-06-27'
-AND t1."alldetails" IS NOT NULL
-AND t1."alldetails" <> ' ';
+--Create view of pre-encampment data for download
+CREATE MATERIALIZED VIEW pre_encamp_value_reqs AS
+	SELECT t1."Service Request ID", t1."Service Request Type", t1."alldetails"
+	FROM alldetail_text t1
+	WHERE t1."Created Date" < '2022-06-27'
+	AND t1."alldetails" IS NOT NULL
+	AND t1."alldetails" <> ' ';
 
 
 --Clean up files

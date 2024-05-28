@@ -1,0 +1,2 @@
+# This is an example of synching a Git repository
+This is the example.
