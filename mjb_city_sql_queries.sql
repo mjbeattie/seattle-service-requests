@@ -72,3 +72,19 @@ select "Service Request Type", avg(duration_hours)
 from elapsed_time
 group by "Service Request Type"
 order by "Service Request Type";
+
+/* Create a new table for the reclassified service requests */
+drop table if exists reclass_servreqs;
+
+create table if not exists reclass_servreqs (
+    servreqid TEXT,
+    text TEXT,
+    id TEXT,
+    label INTEGER,
+    newlabel INTEGER,
+    newid TEXT
+);
+
+select count(*) from reclass_servreqs;
+
+select * from reclass_servreqs;
