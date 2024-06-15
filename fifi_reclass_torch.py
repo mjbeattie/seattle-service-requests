@@ -42,7 +42,7 @@ def main(blocknum, startrow, endrow):
     start_time = time.time()
     
     file_path = ''
-    unlabelledf = 'shuffled_unlabelled.csv'
+    unlabelledf = 'unlabelled.csv'
     
     unldf = pd.read_csv(file_path + unlabelledf)
     
@@ -90,21 +90,22 @@ def main(blocknum, startrow, endrow):
 
     # Add the new labels and IDs back to the sample and save
     label2id = {
-        'SPU-Graffiti Report': 0,
-        'SEA-Unauthorized Encampment': 1,
-        'SDOT-Abandoned Vehicle': 2,
-        'SPU-Illegal Dumping Report': 3,
-        'SPD-Parking Enforcement': 4,
-        'SPU-Clogged Drains': 5,
-        'SPR-Maintenance': 6,
-        'CSB-General Inquiry': 7,
-        'SDOT-Sign and Signal Maintenance': 8,
-        'SPU-Public Litter Cans': 9,
-        'SDOT-Shared Micromobility': 10,
-        'SDOT-Pothole': 11,
-        'SEA-Overgrown Vegetation': 12,
-        'SCL-Streetlight Report': 13,
-        'FAS-SAS-Dead Animal': 14
+        'CSB-General Inquiry': 0,
+        'FAS-CPD-Business Public Health Complaint': 1,
+        'FAS-SAS-Dead Animal': 2,
+        'SCL-Streetlight Report': 3,
+        'Abandoned Vehicle': 4,
+        'SDOT-Pothole': 5,
+        'SDOT-Shared Micromobility': 6,
+        'SDOT-Sign and Signal Maintenance': 7,
+        'SEA-Overgrown Vegetation': 8,
+        'SEA-Unauthorized Encampment': 9,
+        'SPD-Parking Enforcement': 10,
+        'SPR-Maintenance': 11,
+        'SPU-Clogged Drains': 12,
+        'SPU-Graffiti Report': 13,
+        'SPU-Illegal Dumping Report': 14,
+        'SPU-Public Litter Cans': 15
     }
     
     label2iddf = pd.DataFrame(label2id.items(), columns=['newid', 'newlabel'])

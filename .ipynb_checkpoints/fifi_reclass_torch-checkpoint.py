@@ -22,33 +22,51 @@ def append_line_to_file(file_path, line):
         # Append the line to the file
         file.write(line)
 
-def main(fileout):
+def main(blocknum, startrow, endrow):
+
+    # Try to manage memory
+    device_map="auto"
+    torch_dtype=torch.float16
 
     # Set parallelism explicitly to avoid warning
     os.environ["TOKENIZERS_PARALLELISM"] = "true"
     
+    # Check for GPU
+    print("GPU available?", torch.cuda.is_available())
+    devices = [i for i in range(torch.cuda.device_count())]
+    device_names = [torch.cuda.get_device_name(d) for d in devices]
+    print(f"Available GPUs: {device_names}")
+
     # Record the run times to a log file
     logf = 'fifi_torch_running_times.txt'
     start_time = time.time()
     
     file_path = ''
-    unlabelledf = 'shuffled_unlabelled.csv'
+    unlabelledf = 'unlabelled.csv'
     
     unldf = pd.read_csv(file_path + unlabelledf)
     
     # Run the routine on blocks of 500 -- memory can't handle more
-    blocknum = 0
-    startrow = 0
-    endrow = 999
-    samplesize = endrow - startrow + 1
+#    blocknum = 6
+#    startrow = 35000
+#    endrow = 40000
+    samplesize = endrow - startrow
     unlsubset = unldf.iloc[startrow:endrow]
     
     texts = unlsubset['text'].tolist()
     servreqids = unlsubset['servreqid'].tolist()
     
+    # Get tokenizer from pre-trained model and tokenize texts
+    tokenizer = AutoTokenizer.from_pretrained("mjbeattie/fifi_classification")
+    print("Tokenizing input texts")
     inputs = tokenizer(texts, truncation=True, padding=True, max_length=512, return_tensors="pt")
-    
+
+    # Get model for reclassification
+    print("Loading model")
+    model = AutoModelForSequenceClassification.from_pretrained("mjbeattie/fifi_classification")
+
     # Predict the classification of the test text
+    print("Reclassifying texts")
     with torch.no_grad():
         logits = model(**inputs).logits
     
@@ -72,21 +90,22 @@ def main(fileout):
 
     # Add the new labels and IDs back to the sample and save
     label2id = {
-        'SPU-Graffiti Report': 0,
-        'SEA-Unauthorized Encampment': 1,
-        'SDOT-Abandoned Vehicle': 2,
-        'SPU-Illegal Dumping Report': 3,
-        'SPD-Parking Enforcement': 4,
-        'SPU-Clogged Drains': 5,
-        'SPR-Maintenance': 6,
-        'CSB-General Inquiry': 7,
-        'SDOT-Sign and Signal Maintenance': 8,
-        'SPU-Public Litter Cans': 9,
-        'SDOT-Shared Micromobility': 10,
-        'SDOT-Pothole': 11,
-        'SEA-Overgrown Vegetation': 12,
-        'SCL-Streetlight Report': 13,
-        'FAS-SAS-Dead Animal': 14
+        'CSB-General Inquiry': 0,
+        'FAS-CPD-Business Public Health Complaint': 1,
+        'FAS-SAS-Dead Animal': 2,
+        'SCL-Streetlight Report': 3,
+        'Abandoned Vehicle': 4,
+        'SDOT-Pothole': 5,
+        'SDOT-Shared Micromobility': 6,
+        'SDOT-Sign and Signal Maintenance': 7,
+        'SEA-Overgrown Vegetation': 8,
+        'SEA-Unauthorized Encampment': 9,
+        'SPD-Parking Enforcement': 10,
+        'SPR-Maintenance': 11,
+        'SPU-Clogged Drains': 12,
+        'SPU-Graffiti Report': 13,
+        'SPU-Illegal Dumping Report': 14,
+        'SPU-Public Litter Cans': 15
     }
     
     label2iddf = pd.DataFrame(label2id.items(), columns=['newid', 'newlabel'])
@@ -100,8 +119,9 @@ def main(fileout):
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
-    parser.add_argument("--fileout", type=str, required=False, help="Enter name of output file", default='fifi_inference_torch_output.txt')
-
+    parser.add_argument("--blocknum", type=int, required=True, help="Enter the block number", default=999)
+    parser.add_argument("--startrow", type=int, required=True, help="Enter the startrow", default=40000)
+    parser.add_argument("--endrow", type=int, required=True, help="Enter the endrow", default=45000)
     args = parser.parse_args()
-    print('Running classification with fileout = ', args.fileout)
-    main(args.fileout)
+    print('Running classification with blocknum=', args.blocknum, "startrow=", args.startrow, "endrow=", args.endrow)
+    main(args.blocknum, args.startrow, args.endrow)
