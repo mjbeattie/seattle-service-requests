@@ -1,6 +1,7 @@
 # seattle-service-requests
 ## University of Oklahoma
 ## Data Science and Analytics Institute
+## Matthew J. Beattie
 
 This repository contains scripts for manipulation data from the Seattle FindIt-FixIt application.  It also includes a script that builds and uses a retrained LLM to reclassify service request types based upon text verbatims included by residents in their requests.  The dataset and LLM are available in the HuggingFace hub at mjbeattie/finditfixit.
 
